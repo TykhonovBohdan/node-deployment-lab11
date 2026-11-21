@@ -70,9 +70,14 @@ node scripts/check-api.mjs http://localhost:4100 1.0.0 staging
 
 ## Результат роботи — заповнює студент
 
-- Команда локального запуску:
-- Параметри середовища:
-- Посилання на репозиторій:
-- Спосіб розгортання та URL або причина локального варіанта:
-- Результат перевірки версії 1.1.0 та її коміту:
-- Ресурси, які зупинено або видалено:
+Команда локального запуску: npm run dev (виконує node --env-file=.env src/server.js).
+
+Параметри середовища: PORT, NODE_ENV, APP_ENV, APP_MESSAGE (локально у .env: PORT=4100, NODE_ENV=production, APP_ENV=staging; на Render: PORT задається платформою автоматично, NODE_ENV=production, APP_ENV=production, APP_MESSAGE="Практична 11 Тихонов ІТ-33-4").
+
+Посилання на репозиторій: https://github.com/TykhonovBohdan/node-deployment-lab11
+
+Спосіб розгортання та URL: хмарний Web Service на платформі Render (тариф Free, гілка main, Health Check Path /ready, Auto-Deploy After CI Checks Pass). Публічний URL: https://lab11-tykhonovbohdan-api.onrender.com (примітка: безкоштовний сервіс може призупинятися за відсутності запитів, тому перший запит після простою може тривати до 1–2 хвилин).
+
+Результат перевірки версії 1.1.0 та її коміту: перевірка командою node scripts/check-api.mjs https://lab11-tykhonovbohdan-api.onrender.com 1.1.0 production завершилася успішно (API checks passed); маршрути /health, /ready та /api/v1/info повернули статус 200, /unknown – 404 (ROUTE_NOT_FOUND); у відповіді підтверджено version: "1.1.0", environment: "production" та revision: "9c2d44a6a22cc6d060653711f2cb23e3b22a6710".
+
+Ресурси, які зупинено або видалено: локальний сервер зупинено через Ctrl+C; безкоштовний Web Service на Render (Free) залишено активним для перевірки викладачем без додавання платіжних даних.
